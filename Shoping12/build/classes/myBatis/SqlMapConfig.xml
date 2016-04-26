@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<!-- <typeAlias type="com.shop.ex1.MineVO" alias="mine"/> -->
+		<typeAlias type="com.shop.ex1.member.MemberVO" alias="member"/>
+		<typeAlias type="com.shop.ex1.goods.GoodsVO" alias="goods"/>
+		<typeAlias type="com.shop.ex1.cart.CartVO" alias="cart"/>
+		<typeAlias type="com.shop.ex1.order.OrderGoodsVO" alias="orderGoods"/>
+		<typeAlias type="com.shop.ex1.mine.MineVO" alias="mine"/>
+		<typeAlias type="com.shop.ex1.goods.ImageFileVO" alias="imageFile"/>
+	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">
+		<transactionManager type="JDBC"/>
+		
+			<dataSource  type="POOLED">
+	        <property name="driver"  value="oracle.jdbc.driver.OracleDriver" />
+	        <property  name="url"    value="jdbc:oracle:thin:@localhost:1521:XE" />
+	        <property name="username" value="scott" />
+	        <property name="password"  value="tiger"/>        
+	      </dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+	<mapper resource="myBatis/mappers/member.xml"/>
+	<mapper resource="myBatis/mappers/goods.xml"/>
+	<mapper resource="myBatis/mappers/notice.xml"/>
+	<mapper resource="myBatis/mappers/cart.xml"/>
+	<mapper resource="myBatis/mappers/order.xml"/>
+	<mapper resource="myBatis/mappers/mine.xml"/>
+	<mapper resource="myBatis/mappers/admin.xml"/>
+	</mappers>
+</configuration>
+
+ 
+ 

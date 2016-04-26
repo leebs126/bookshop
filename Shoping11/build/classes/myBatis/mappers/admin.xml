@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.admin">
+<!-- 리절트 맵 정의 -->	
+	<resultMap id="goodsResult" type="com.shop.ex1.goods.GoodsVO">
+		<result property="goods_id" column="goods_id" />
+		<result property="goods_title" column="goods_title" />
+		<result property="goods_writer" column="goods_writer" />
+		<result property="goods_price" column="goods_price" />
+		<result property="goods_publisher" column="goods_publisher" />
+		
+		<result property="goods_type" column="goods_type" />
+		<result property="goods_sales_price" column="goods_sales_price" />
+		<result property="goods_published_date" column="goods_published_date" />
+		<result property="goods_page_total" column="goods_page_total" />
+		<result property="goods_isbn" column="goods_isbn" />
+		<result property="goods_delivery_price" column="goods_delivery_price" />
+		<result property="goods_delivery_date" column="goods_delivery_date" />
+		
+		<result property="fileName" column="fileName" />
+		<result property="goods_sort" column="goods_sort" />
+		<result property="goods_writer_intro" column="goods_writer_intro" />
+		<result property="goods_intro" column="goods_intro" />
+		<result property="goods_contents_order" column="goods_contents_order" javaType="java.lang.String" jdbcType="CLOB"  />
+	</resultMap>	
+	
+	<insert id="addNewGoods" parameterType="goods"   >
+		<selectKey resultType="String" keyProperty="goods_id" order="BEFORE">
+	    	select seq_goods_id.nextval from dual
+	    </selectKey>
+	    
+	    <![CDATA[
+		   insert into t_Goods_info(GOODS_ID, 
+		   							GOODS_SORT,
+		                            GOODS_TITLE,
+		                            GOODS_WRITER,
+		                            
+		                            GOODS_PUBLISHER,
+									GOODS_PRICE,
+									GOODS_SALES_PRICE,
+									GOODS_POINT,
+									GOODS_PUBLISHED_DATE,
+									
+									GOODS_PAGE_TOTAL,
+									GOODS_ISBN,
+									GOODS_DELIVERY_PRICE,
+									GOODS_DELIVERY_DATE,
+									GOODS_TYPE,
+									GOODS_WRITER_INTRO,
+									
+									GOODS_INTRO,
+									PUBLISHER_COMMENT,
+									RECOMMENDATION,
+		                         	GOODS_CONTENTS_ORDER
+		                         )
+			  			values(
+			  			      #{goods_id},
+			  			      #{goods_sort},
+			  			      #{goods_title},
+			  			      #{goods_writer},
+			  			     
+			  			      #{goods_publisher },
+			  			      #{goods_price},
+			  			      #{goods_sales_price},
+			  			      #{goods_point},
+			  			      #{goods_published_date},
+			  			      
+			  			      #{goods_page_total},
+			  			      #{goods_isbn },
+			  			      #{goods_delivery_price },
+			  			      #{goods_delivery_date },
+			  			      #{goods_type },
+			  			      #{goods_writer_intro},
+									
+							  #{goods_intro},
+			  			      #{publisher_comment },
+			  			      #{recommendation },	
+			  			      #{goods_contents_order:VARCHAR}
+			 			 )
+		]]>
+	</insert> 
+	
+	<select id="list_new_goods" resultMap="goodsResult"   parameterType="java.util.HashMap"  >
+	    <![CDATA[
+		  select * from (
+			   select rowNum as recNum,
+			   		  goods_id,
+			          goods_title,
+			          goods_writer,
+			          goods_publisher,
+			          goods_sales_price,
+			          to_char(creDate,'YYYY-MM-DD')  as creDate,
+			          goods_published_date
+			       from (
+			             select  goods_id,
+			             		 goods_title,
+			             		 goods_writer,
+			             		 goods_publisher,
+			             		 goods_sales_price,
+			             		 creDate,
+			             		 goods_published_date
+			              from t_goods_info 
+			                where  to_char(credate,'yyyy-mm-dd')  between #{beginDate} and #{endDate}
+			               order by creDate desc
+					    )
+				)							
+			where				
+		recNum between (#{chapter}-1)*100+ (#{pageNum}-1)*10+1 and (#{chapter}-1)*100+(#{pageNum})*10				        
+    	]]>
+	</select>
+	
+	<insert id="addImageFile" parameterType="imageFile"   >
+		<selectKey resultType="String" keyProperty="image_id" order="BEFORE">
+	    	select seq_image_id.nextval from dual
+	    </selectKey>
+	    <![CDATA[
+		   insert into goods_detail_image (GOODS_ID,
+											FILENAME,
+											FILETYPE,
+											id,
+											image_Id,
+											CREDATE)
+		   							values(#{goods_id},
+		   									#{fileName},
+		   									#{fileType},
+		   									#{id},
+		   									#{image_id},
+		   									sysdate
+								   )
+		]]>
+	</insert>
+		
+		
+	<update id="modifyGoodsInfo" parameterType="goods" >
+	   update t_goods_info
+	    set goods_sort=#{goods_sort},
+	    	goods_title=#{goods_title},
+	    	goods_writer=#{goods_writer},
+	    	goods_publisher=#{goods_publisher},
+	    	goods_price=#{goods_price},
+	    	goods_published_date=#{goods_published_date},
+	    	goods_sales_price=#{goods_sales_price},
+	    	goods_point=#{goods_point},
+	    	goods_page_total=#{goods_page_total},
+	    	goods_isbn=#{goods_isbn},
+	    	goods_delivery_price=#{goods_delivery_price},
+	    	goods_delivery_date=#{goods_delivery_date},
+	    	goods_type=#{goods_type},
+	    	goods_writer_intro=#{goods_writer_intro},
+	    	goods_intro=#{goods_intro},
+	    	publisher_comment=#{publisher_comment},
+	    	recommendation=#{recommendation},
+	    	goods_contents_order=#{goods_contents_order:VARCHAR}
+	    	
+	    where 
+	    goods_id=#{goods_id}
+	
+	</update>
+	
+	<update id="modifyImageFile" parameterType="imageFile">
+		update goods_detail_image
+		 set fileName=#{fileName}
+		where
+		 goods_id=#{goods_id}
+		 and image_id=#{image_id}
+	
+	</update>
+	
+	<delete id="deleteImage" parameterType="String">
+	  delete from goods_detail_image
+	  where image_id=#{image_id}
+	</delete>
+	<!-- 
+	<select id="list_new_goods" resultMap="goodsResult"   parameterType="java.util.HashMap"  >
+	    <![CDATA[
+		  select * from t_goods_info
+          where  to_char(credate,'yyyy-mm-dd')  between #{beginDate} and #{endDate}
+          order by credate desc
+    	]]>
+	</select>
+	 -->
+	
+<!-- 	
+	<select id="goods_detail" resultMap="goodsResult"   parameterType="String"  >
+	    <![CDATA[
+		     select g.*,d.fileName from t_goods_info g, goods_detail_image d
+	        where g.goods_id=d.goods_id
+	        and d.filetype='main_image'
+	        and g.goods_id=#{good_id}
+	        order by g.goods_id
+    	]]>
+	</select>
+	<select id="goods_detail_image" resultMap="goodsResult"   parameterType="String"  >
+	    <![CDATA[
+		    	select * from goods_detail_image 
+		    	where  fileType!='main_image'
+				and goods_id=#{good_id}
+    	]]>
+	</select> --> 
+</mapper>
