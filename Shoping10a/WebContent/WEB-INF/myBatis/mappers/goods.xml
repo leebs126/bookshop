@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.goods">
+<!-- 리절트 맵 정의 -->	
+	<resultMap id="memResult" type="com.jweb.ch16.MemberBean">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="weight" column="weight" />
+		<result property="height" column="height" />
+		<result property="age" column="age" />
+	</resultMap>	
+
+	<select id="selectAllMemberList" resultMap="memResult"   >
+	    <![CDATA[
+			 select * from Member			
+		]]>
+	</select>
+	
+	<select id="selectMember" resultMap="memResult"  parameterType="member" >
+	    <![CDATA[
+			 select * from Member
+			 where
+			 name=#{name}			
+		]]>
+	</select>	
+	
+  <insert id="insertMember"  parameterType="member">
+  <![CDATA[
+    	insert into Member(id,name, height, weight, age)
+      	values(#{id},#{name},#{height},#{weight},#{age})
+   ]]>      
+  </insert>
+    
+ 
+  
+<!--  동적 쿼리문 예제  -->
+  <select id="dynaMember"  parameterType="member" resultType="member">
+     select *   from member
+     <where>
+       <if test=" name !='' and name !=null"> <!-- 빈문자열을 경우 -->
+          name=#{name}
+       </if>
+       <if test="age!='' and age !=null ">
+          and age=#{age}
+       </if>
+     </where>       
+  </select>  
+    
+</mapper>
