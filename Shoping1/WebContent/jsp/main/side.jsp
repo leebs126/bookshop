@@ -31,7 +31,7 @@
 </NAV>
 <DIV class="clear"></DIV>
 <DIV id="banner">
-	<IMG width="190" height="163" src="../image/nikon1.jpg">
+	<IMG width="190" height="163" src="<%=request.getContextPath()%>/image/nikon1.jpg">
 </DIV>
 <DIV id="notice">
 	<H2>공지사항</H2>
@@ -44,12 +44,12 @@
 
 
 <DIV id="banner">
-	<IMG width="190" height="362" src="../image/slate.jpg">
+	<IMG width="190" height="362" src="<%=request.getContextPath()%>/image/slate.jpg">
 </DIV>
 <DIV id="banner">
-	<IMG width="190" height="104" src="../image/custom.jpg">
+	<IMG width="190" height="104" src="<%=request.getContextPath()%>/image/custom.jpg">
 </DIV>
 <DIV id="banner">
-	<IMG width="190" height="69" src="../image/faq.jpg">
+	<IMG width="190" height="69" src="<%=request.getContextPath()%>/image/faq.jpg">
 </DIV>
 </html>

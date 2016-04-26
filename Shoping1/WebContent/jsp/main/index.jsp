@@ -8,13 +8,13 @@
 <META charset="utf-8">
 <META name="viewport" content="width=device-width">
 <TITLE>µµº≠ ºÓ«Œ∏Ù111</TITLE>
-<LINK href="../css/main.css" rel="stylesheet" type="text/css" media="screen">
-<LINK href="../css/basic-jquery-slider.css" rel="stylesheet" type="text/css" media="screen">
-<LINK href="../css/mobile.css" rel="stylesheet" type="text/css">
-<SCRIPT src="../jquery/jquery-1.6.2.min.js" type="text/javascript"></SCRIPT>
-<SCRIPT src="../jquery/jquery.easing.1.3.js" type="text/javascript"></SCRIPT>
-<SCRIPT src="../jquery/stickysidebar.jquery.js" type="text/javascript"></SCRIPT>
-<SCRIPT src="../jquery/basic-jquery-slider.js" type="text/javascript"></SCRIPT>
+<LINK href="<%=request.getContextPath()%>/css/main.css" rel="stylesheet" type="text/css" media="screen">
+<LINK href="<%=request.getContextPath()%>/css/basic-jquery-slider.css" rel="stylesheet" type="text/css" media="screen">
+<LINK href="<%=request.getContextPath()%>/css/mobile.css" rel="stylesheet" type="text/css">
+<SCRIPT src="<%=request.getContextPath()%>/jquery/jquery-1.6.2.min.js" type="text/javascript"></SCRIPT>
+<SCRIPT src="<%=request.getContextPath()%>/jquery/jquery.easing.1.3.js" type="text/javascript"></SCRIPT>
+<SCRIPT src="<%=request.getContextPath()%>/jquery/stickysidebar.jquery.js" type="text/javascript"></SCRIPT>
+<SCRIPT src="<%=request.getContextPath()%>/jquery/basic-jquery-slider.js" type="text/javascript"></SCRIPT>
 
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 </head>

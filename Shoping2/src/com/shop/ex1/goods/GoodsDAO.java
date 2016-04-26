@@ -15,7 +15,7 @@ public class GoodsDAO {
 	public GoodsDAO(){
 		try{
 			Context ctx=new InitialContext();
-			dataFactory=(DataSource)ctx.lookup("java:comp/env/jdbc/Oracle11");
+			dataFactory=(DataSource)ctx.lookup("java:comp/env/jdbc/Oracle11g");
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -27,7 +27,10 @@ public class GoodsDAO {
 			Connection con=dataFactory.getConnection();
 			Statement stmt=con.createStatement();
 			
-			String query="select * from t_Goods";
+			String query="select g.*,d.fileName from t_goods_info g, t_goods_detail_image d" 
+        	 +" where g.goods_id=d.goods_id" 
+        	 +" and d.filetype='main_image'"; 
+			  
 			System.out.println(query);
 			ResultSet rs=stmt.executeQuery(query);
 			

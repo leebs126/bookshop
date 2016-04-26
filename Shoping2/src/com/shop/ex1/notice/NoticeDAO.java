@@ -16,7 +16,7 @@ public class NoticeDAO {
 	public NoticeDAO(){
 		try{
 			Context ctx=new InitialContext();
-			dataFactory=(DataSource)ctx.lookup("java:comp/env/jdbc/Oracle11");
+			dataFactory=(DataSource)ctx.lookup("java:comp/env/jdbc/Oracle11g");
 		}catch(Exception e){
 			e.printStackTrace();
 		}

@@ -5,9 +5,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <DIV id="ad_main_banner">
 	<UL class="bjqs">
-		<LI><IMG width="775" height="145" src="../image/main_banner1.jpg"></LI>
-		<LI><IMG width="775" height="145" src="../image/main_banner2.jpg"></LI>
-		<LI><IMG width="775" height="145" src="../image/main_banner3.jpg"></LI>
+		<LI><IMG width="775" height="145" src="<%=request.getContextPath()%>/image/main_banner1.jpg"></LI>
+		<LI><IMG width="775" height="145" src="<%=request.getContextPath()%>/image/main_banner2.jpg"></LI>
+		<LI><IMG width="775" height="145" src="<%=request.getContextPath()%>/image/main_banner3.jpg"></LI>
 	</UL>
 </DIV>
 <c:set var="cnt" value="0"  />
@@ -16,8 +16,8 @@
 	<c:forEach var="item" items="${goods_list }">
 		<c:if test="${item.goods_type eq 'bestseller'}">
 			<DIV class="book">
-				<A href="./goods_detail2.jsp"><IMG class="link"
-					src="../image/1px.gif"> </A> 
+				<A href="<%=request.getContextPath()%>/goods_detail2.jsp"><IMG class="link"
+					src="<%=request.getContextPath()%>/image/1px.gif"> </A> 
 					<IMG width="121" height="154" 
 					     src="<%=request.getContextPath()%>/download.do?fileName=${item.fileName}">
 
@@ -58,7 +58,7 @@
 
 <DIV class="clear"></DIV>
 <DIV id="ad_sub_banner">
-	<IMG width="770" height="117" src="../image/sub_banner1.jpg">
+	<IMG width="770" height="117" src="<%=request.getContextPath()%>/image/sub_banner1.jpg">
 </DIV>
 <DIV id="laptop">
 	<H3>노트북 신상품</H3>

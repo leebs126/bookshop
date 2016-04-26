@@ -3,7 +3,7 @@
 
 <body>
 	<DIV id="logo">
-		<IMG width="176" height="67" alt="Senop" src="../image/senop_logo.png">
+		<IMG width="176" height="67" alt="Senop" src="<%=request.getContextPath()%>/image/Booktopia_Logo1.png">
 	</DIV>
 	<DIV id="head_link">
 		<UL>
