@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<!--
+     This is a blank Struts configuration file with an example
+     welcome action/page and other commented sample elements.
+
+     Struts Validator is configured using the factory defaults
+     and is ready-to-use.
+
+     NOTE: If you have a generator tool to create the corresponding Java classes
+     for you, you could include the details in the "form-bean" declarations.
+     Otherwise, you would only define the "form-bean" element itself, with the
+     corresponding "name" and "type" attributes, as shown here.
+-->
+
+
+<struts-config>
+
+
+<!-- ================================================ Form Bean Definitions -->
+
+    <form-beans>
+    <!-- sample form bean descriptor for an ActionForm
+        <form-bean
+            name="inputForm"
+            type="app.InputForm"/>
+    end sample -->
+
+    <!-- sample form bean descriptor for a DynaActionForm
+        <form-bean
+            name="logonForm"
+            type="org.apache.struts.action.DynaActionForm">
+            <form-property
+                name="username"
+                type="java.lang.String"/>
+            <form-property
+                name="password"
+                type="java.lang.String"/>
+       </form-bean>
+    end sample -->
+    </form-beans>
+
+
+<!-- ========================================= Global Exception Definitions -->
+
+    <global-exceptions>
+        <!-- sample exception handler
+        <exception
+            key="expired.password"
+            type="app.ExpiredPasswordException"
+            path="/changePassword.jsp"/>
+        end sample -->
+    </global-exceptions>
+
+
+<!-- =========================================== Global Forward Definitions -->
+
+    <global-forwards>
+        <!-- Default forward to "Welcome" action -->
+        <!-- Demonstrates using index.jsp to forward -->
+        <forward
+            name="welcome"
+            path="/Welcome.do"/>
+    </global-forwards>
+
+
+<!-- =========================================== Action Mapping Definitions -->
+
+    <action-mappings>
+		<action  path="/main/index" type="com.shop.ex1.main.MainAction">
+		  <forward  name="mainPage"  path="/mainPage.do" />
+		</action>
+     <action path="/mainPage"  type="org.apache.struts.actions.ForwardAction" parameter="main.mainPage"  />
+     
+     <action  path="/goods/goods" type="com.shop.ex1.goods.GoodsAction">
+		  <forward  name="goods_detail"  path="/goods_detail.do" />
+		   <forward  name="goods_list"  path="/goods_list.do" />
+	</action>
+     <action path="/goods_detail"  type="org.apache.struts.actions.ForwardAction" parameter="goods.goods_detail"  />
+     <action path="/goods_list"  type="org.apache.struts.actions.ForwardAction" parameter="goods.goods_list"  />
+      
+      <!-- 회원 기능 -->
+      <action  path="/member/member" type="com.shop.ex1.member.MemberAction">
+          <forward  name="member_join_page"  path="/member_join_page.do" />
+          <forward  name="member_login_page"  path="/member_login_page.do" />
+	      <forward  name="action_login"  path="/main/index.do" />
+		  <forward  name="action_logout"  path="/main/index.do" />
+		  <forward  name="action_join"  path="/member_login_page.do" />
+	  </action>
+		  
+	<action path="/member_login_page"  type="org.apache.struts.actions.ForwardAction" parameter="member.member_login_page"  />
+	<action path="/member_join_page"  type="org.apache.struts.actions.ForwardAction" parameter="member.member_join_page"  />
+    
+    <!-- 카트 기능 -->
+      <action  path="/cart/cart" type="com.shop.ex1.cart.CartAction">
+          <forward  name="my_cart_list"  path="/my_cart_list.do" />
+	  </action>
+	  
+	  <action path="/my_cart_list"  type="org.apache.struts.actions.ForwardAction" parameter="cart.my_cart_list"  />
+    
+    
+     <!-- 주문 기능 -->
+      <action  path="/order/order" type="com.shop.ex1.order.OrderAction">
+          <forward  name="order_goods"  path="/order_goods.do" />
+          <forward  name="order_all_cart_goods"  path="/order_all_cart_goods.do" />
+          <forward  name="pay_order_goods"  path="/order_result.do" />
+          <forward  name="order_result"  path="/order_result.do" />
+          
+	  </action>
+	  
+	  <action path="/order_goods"  type="org.apache.struts.actions.ForwardAction" parameter="order.order_goods"  />
+	  <action path="/order_all_cart_goods"  type="org.apache.struts.actions.ForwardAction" parameter="order.order_all_cart_goods"  />
+	  <action path="/order_result"  type="org.apache.struts.actions.ForwardAction" parameter="order.order_result"  />
+	  
+	  
+	  
+     <!-- 마이 페이지 기능 -->
+      <action  path="/mine/mine" type="com.shop.ex1.mine.MineAction">
+          <forward  name="my_page_list"  path="/my_page_list.do" />
+          <forward  name="my_order_detail"  path="/my_order_detail.do" />
+          <forward  name="find_order_delivery_hist"  path="/find_order_delivery_hist.do" />
+          <forward  name="my_info_detail"  path="/my_info_detail.do" />
+          <forward  name="modify_my_info"  path="/my_info_detail.do" />
+	  </action>
+	  
+	  <action path="/my_page_list"  type="org.apache.struts.actions.ForwardAction" parameter="mine.my_page_list"  />
+	  <action path="/my_order_detail"  type="org.apache.struts.actions.ForwardAction" parameter="mine.my_order_detail"  />
+	  <action path="/find_order_delivery_hist"  type="org.apache.struts.actions.ForwardAction" parameter="mine.find_order_delivery_hist"  />
+	  <action path="/my_info_detail"  type="org.apache.struts.actions.ForwardAction" parameter="mine.my_info_detail"  />
+	  
+	  
+	  <!-- 관리자 기능 -->
+      <action  path="/admin/admin" type="com.shop.ex1.admin.AdminAction">
+          <forward  name="manage_goods"  path="/manage_goods.do" />
+          <forward  name="add_goods_page"  path="/add_goods_page.do" />
+          <forward  name="add_goods_imagefile"  path="/add_goods_imagefile.do" />
+          <forward  name="modify_goods_page"  path="/modify_goods_page.do" />
+          <forward  name="modify_goods_image_page"  path="/modify_goods_image_page.do" />
+          <forward  name="manage_order"  path="/manage_order.do" />
+          <forward  name="list_simple_order_goods"  path="/manage_order.do" />
+          <forward  name="list_detail_order_goods"  path="/manage_order.do" />
+          
+	  </action>
+	  
+	  <action path="/manage_goods"  type="org.apache.struts.actions.ForwardAction" parameter="admin.manage_goods"  />
+	  <action path="/add_goods_page"  type="org.apache.struts.actions.ForwardAction" parameter="admin.add_goods_page"  />
+	  <action path="/add_goods_imagefile"  type="org.apache.struts.actions.ForwardAction" parameter="admin.add_goods_imagefile"  />
+	  <action path="/modify_goods_page"  type="org.apache.struts.actions.ForwardAction" parameter="admin.modify_goods_page"  />
+	  <action path="/modify_goods_image_page"  type="org.apache.struts.actions.ForwardAction" parameter="admin.modify_goods_image_page"  />
+	  
+	  <action path="/manage_order"  type="org.apache.struts.actions.ForwardAction" parameter="admin.manage_order"  />
+
+
+
+   <!-- 파일 업로드,다운로드 기능 -->
+      <action  path="/file/uploadFile" type="com.shop.ex1.common.file.UploadFileAction">
+          <!-- <forward  name="add_goods_page"  path="/add_goods_page.do" />
+          <forward  name="add_goods_imagefile"  path="/add_goods_imagefile.do" />
+          <forward  name="modify_goods_page"  path="/modify_goods_page.do" />
+          <forward  name="modify_goods_image_page"  path="/modify_goods_image_page.do" /> -->
+	  </action>
+	  
+	  <!-- <action path="/manage_goods"  type="org.apache.struts.actions.ForwardAction" parameter="admin.manage_goods"  />
+	  <action path="/add_goods_page"  type="org.apache.struts.actions.ForwardAction" parameter="admin.add_goods_page"  />
+	  <action path="/add_goods_imagefile"  type="org.apache.struts.actions.ForwardAction" parameter="admin.add_goods_imagefile"  />
+	  <action path="/modify_goods_page"  type="org.apache.struts.actions.ForwardAction" parameter="admin.modify_goods_page"  />
+	  <action path="/modify_goods_image_page"  type="org.apache.struts.actions.ForwardAction" parameter="admin.modify_goods_image_page"  />
+ -->
+
+	  
+    </action-mappings>
+
+	
+
+  <!-- struct tile controller -->
+   <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+    
+    
+<!-- ======================================== Message Resources Definitions -->
+
+    <message-resources parameter="MessageResources" />
+
+
+<!-- =============================================== Plug Ins Configuration -->
+
+  <!-- ======================================================= Tiles plugin -->
+  <!--
+     This plugin initialize Tiles definition factory. This later can takes some
+	 parameters explained here after. The plugin first read parameters from
+	 web.xml, thenoverload them with parameters defined here. All parameters
+	 are optional.
+     The plugin should be declared in each struts-config file.
+       - definitions-config: (optional)
+            Specify configuration file names. There can be several comma
+		    separated file names (default: ?? )
+       - moduleAware: (optional - struts1.1)
+            Specify if the Tiles definition factory is module aware. If true
+            (default), there will be one factory for each Struts module.
+			If false, there will be one common factory for all module. In this
+            later case, it is still needed to declare one plugin per module.
+            The factory will be initialized with parameters found in the first
+            initialized plugin (generally the one associated with the default
+            module).
+			  true : One factory per module. (default)
+			  false : one single shared factory for all modules
+	   - definitions-parser-validate: (optional)
+	        Specify if xml parser should validate the Tiles configuration file.
+			  true : validate. DTD should be specified in file header (default)
+			  false : no validation
+
+	  Paths found in Tiles definitions are relative to the main context.
+
+      To use this plugin, download and add the Tiles jar to your WEB-INF/lib
+      directory then uncomment the plugin definition below.
+
+  -->  
+
+
+  <plug-in className="org.apache.struts.tiles.TilesPlugin">
+  <set-property property="definitions-config" value="/WEB-INF/tiles/tiles.xml" />
+   <set-property property="moduleAware" value="true" />
+ </plug-in>
+
+</struts-config>
+

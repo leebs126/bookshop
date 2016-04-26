@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC 
+ "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+ "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+
+    <definition name="baseLayout" path="/jsp/layout/layout.jsp">
+    <put name="title" value="쇼핑몰 메인 페이지_12" />
+    <put name="header" value="/jsp/common/header.jsp" />
+    <put name="side" value="/jsp/common/side.jsp" />
+    <put name="body" value="/jsp/main/main.jsp" />
+    <put name="footer" value="/jsp/common/footer.jsp" />
+    <put name="sticky_menu" value="/jsp/common/sticky_menu.jsp" />
+  </definition> 
+  
+  <definition name="main.mainPage" extends="baseLayout">
+     <put name="title" value="쇼핑몰 메인 페이지_12" />
+  </definition>
+   
+   
+   <definition name="goods.goods_list" extends="baseLayout">
+    <put name="title" value="상품 목록 페이지" />
+    <put name="body" value="/jsp/goods/goods_list.jsp" />
+  </definition>
+  
+  <definition name="goods.goods_detail" extends="baseLayout">
+    <put name="title" value="상품 상세 페이지" />
+    <put name="body" value="/jsp/goods/goods_detail.jsp" />
+  </definition>  
+  <definition name="goods.goods_search" extends="baseLayout">
+    <put name="title" value="상품 조회 페이지" />
+    <put name="body" value="/jsp/goods/goods_search_list.jsp" />
+  </definition>
+   
+   <!-- 회원 기능 -->
+   <definition name="member.member_login_page" extends="baseLayout">
+    <put name="title" value="회원 로그인 페이지" />
+    <put name="body" value="/jsp/member/member_login.jsp" />
+  </definition>
+  
+    <definition name="member.member_join_page" extends="baseLayout">
+    <put name="title" value="회원 가입 페이지" />
+    <put name="body" value="/jsp/member/member_join.jsp" />
+  </definition>
+  
+  <!-- 카트 기능 -->
+   <definition name="cart.my_cart_list" extends="baseLayout">
+    <put name="title" value="내 장바구니 정보" />
+    <put name="body" value="/jsp/cart/my_cart_list.jsp" />
+  </definition>
+  
+   <!-- 주문 기능 -->
+   <definition name="order.order_goods" extends="baseLayout">
+    <put name="title" value="제품 주문 페이지" />
+    <put name="body" value="/jsp/order/order_goods.jsp" />
+  </definition>
+  
+  <definition name="order.order_all_cart_goods" extends="baseLayout">
+    <put name="title" value="제품 주문 페이지" />
+    <put name="body" value="/jsp/order/order_goods.jsp" />
+  </definition>
+  
+  <definition name="order.order_result" extends="baseLayout">
+    <put name="title" value="제품 주문 결과 페이지" />
+    <put name="body" value="/jsp/order/order_goods_result.jsp" />
+  </definition>
+  
+  <!-- 마이 페이지 기능 -->
+   <definition name="mine.my_page_list" extends="baseLayout">
+    <put name="title" value="마이 페이지 목록 페이지" />
+    <put name="body" value="/jsp/mine/my_page_list.jsp" />
+  </definition>
+  
+  <definition name="mine.my_order_detail" extends="baseLayout">
+    <put name="title" value="내 주문 상세 페이지" />
+    <put name="body" value="/jsp/mine/my_order_detail.jsp" />
+  </definition>
+  
+  <definition name="mine.find_order_delivery_hist" extends="baseLayout">
+    <put name="title" value="내 주문 배달 이력 조회 페이지" />
+    <put name="body" value="/jsp/mine/find_order_delivery_hist.jsp" />
+  </definition>
+  
+  <definition name="mine.my_info_detail" extends="baseLayout">
+    <put name="title" value="내 정보 상세 페이지" />
+    <put name="body" value="/jsp/mine/my_info_detail.jsp" />
+  </definition>
+  <definition name="mine.modify_my_info" extends="baseLayout">
+    <put name="title" value="내 정보 수정 페이지" />
+    <put name="body" value="/jsp/mine/modify_my_info.jsp" />
+  </definition>
+  
+  <!-- 관리자 기능 -->
+   <definition name="admin.manage_goods" extends="baseLayout">
+    <put name="title" value="관리자 제품 관리 페이지" />
+    <put name="body" value="/jsp/admin/main/manage_goods.jsp" />
+  </definition>
+  
+  <definition name="admin.add_goods_page" extends="baseLayout">
+    <put name="title" value="관리자 제품 추가 페이지" />
+    <put name="body" value="/jsp/admin/goods/add_goods_page.jsp" />
+  </definition>
+  
+  <definition name="admin.add_goods_imagefile" extends="baseLayout">
+    <put name="title" value="관리자 제품 이미지 추가 페이지" />
+    <put name="body" value="/jsp/admin/goods/add_goods_image.jsp" />
+  </definition>
+  
+  <definition name="admin.modify_goods_page" extends="baseLayout">
+    <put name="title" value="관리자 제품 정보 수정 페이지" />
+    <put name="body" value="/jsp/admin/goods/modify_goods_page.jsp" />
+  </definition>
+  
+  <definition name="admin.modify_goods_image_page" extends="baseLayout">
+    <put name="title" value="관리자 제품 이미지 수정 페이지" />
+    <put name="body" value="/jsp/admin/goods/modify_goods_image_page.jsp" />
+  </definition>
+  
+  <definition name="admin.manage_order" extends="baseLayout">
+    <put name="title" value="관리자 주문 관리 페이지" />
+    <put name="body" value="/jsp/admin/main/manage_order.jsp" />
+  </definition>
+   <!-- 
+  
+  회원 기능 
+	<definition name="member.member_join_page" extends="mainPage">
+    <put-attribute name="title" value="회원 가입 페이지" />
+    <put-attribute name="body" value="/jsp/member/member_join.jsp" />
+  </definition> 
+  
+   	<definition name="member.member_login_page" extends="mainPage">
+    <put-attribute name="title" value="로그인 페이지" />
+    <put-attribute name="body" value="/jsp/member/member_login.jsp" />
+  </definition>
+  
+  카트 기능
+  <definition name="cart.my_cart_list" extends="mainPage">
+    <put-attribute name="title" value="내 장바구니 정보" />
+    <put-attribute name="body" value="/jsp/cart/my_cart_list.jsp" />
+  </definition>  
+  
+  
+  주문 기능
+  <definition name="order.order_goods" extends="mainPage">
+    <put-attribute name="title" value="제품 주문 페이지" />
+    <put-attribute name="body" value="/jsp/order/order_goods.jsp" />
+  </definition>
+  
+  <definition name="order.order_goods_result" extends="mainPage">
+    <put-attribute name="title" value="제품 주문 결과 페이지" />
+    <put-attribute name="body" value="/jsp/order/order_goods_result.jsp" />
+  </definition>
+  
+  마이 페이지 기능
+  <definition name="mine.my_page_list" extends="mainPage">
+    <put-attribute name="title" value="마이페이지 페이지" />
+    <put-attribute name="body" value="/jsp/mine/my_page_list.jsp" />
+  </definition>
+  <definition name="mine.my_order_detail" extends="mainPage">
+    <put-attribute name="title" value="내주문 상세 페이지" />
+    <put-attribute name="body" value="/jsp/mine/my_order_detail.jsp" />
+  </definition> 
+  <definition name="mine.find_order_delivery_hist" extends="mainPage">
+    <put-attribute name="title" value="내주문 조회 페이지" />
+    <put-attribute name="body" value="/jsp/mine/find_order_delivery_hist.jsp" />
+  </definition>   
+  <definition name="mine.my_info_detail" extends="mainPage">
+    <put-attribute name="title" value="내 정보 상세 페이지" />
+    <put-attribute name="body" value="/jsp/mine/my_info_detail.jsp" />
+  </definition>
+  
+  관리자 페이지 기능
+  <definition name="admin.manage_goods" extends="mainPage">
+    <put-attribute name="title" value="제품 관리 페이지" />
+    <put-attribute name="body" value="/jsp/admin/main/manage_goods.jsp" />
+  </definition>
+  <definition name="admin.manage_order" extends="mainPage">
+    <put-attribute name="title" value="주문 관리 페이지" />
+    <put-attribute name="body" value="/jsp/admin/main/manage_order.jsp" />
+  </definition>
+  
+  <definition name="admin.add_goods_page" extends="mainPage">
+    <put-attribute name="title" value="제품 등록 페이지" />
+    <put-attribute name="body" value="/jsp/admin/goods/add_goods_page.jsp" />
+  </definition>
+   <definition name="admin.add_goods_imagefile" extends="mainPage">
+    <put-attribute name="title" value="제품 이미지 등록 페이지" />
+    <put-attribute name="body" value="/jsp/admin/goods/add_goods_image.jsp" />
+  </definition>
+  <definition name="admin.modify_goods_page" extends="mainPage">
+    <put-attribute name="title" value="제품 정보 수정 페이지" />
+    <put-attribute name="body" value="/jsp/admin/goods/modify_goods_page.jsp" />
+  </definition>
+  <definition name="admin.modify_goods_image_page" extends="mainPage">
+    <put-attribute name="title" value="제품 이미지 수정 페이지" />
+    <put-attribute name="body" value="/jsp/admin/goods/modify_goods_image_page.jsp" />
+  </definition>
+   -->
+</tiles-definitions>
